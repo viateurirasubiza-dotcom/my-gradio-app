@@ -1,4 +1,5 @@
 import gradio as gr
+import os
 
 # ----------------------
 # Dummy in-memory database
@@ -100,4 +101,5 @@ with gr.Blocks() as demo:
         pay_btn.click(pay_user, inputs=[pay_user_id_input, pay_amount_input], outputs=pay_output)
 
 # ----------------------
-demo.launch()
+# Launch with Render-friendly server settings
+demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 7860)))
